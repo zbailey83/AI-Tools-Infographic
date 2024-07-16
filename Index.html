@@ -1,0 +1,102 @@
+import React from 'react';
+import { ArrowRight, Check } from 'lucide-react';
+
+const AITool = ({ name, features, pricing, link }) => (
+  <div className="bg-white rounded-lg shadow-md p-6 mb-6 hover:shadow-lg transition-shadow">
+    <h2 className="text-2xl font-bold text-blue-600 mb-4">
+      {link ? (
+        <a href={link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+          {name} <ArrowRight className="inline h-5 w-5" />
+        </a>
+      ) : (
+        name
+      )}
+    </h2>
+    <div className="mb-4">
+      <h3 className="text-xl font-semibold text-gray-700 mb-2">Key Features:</h3>
+      <ul className="space-y-2">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-start">
+            <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1" />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h3 className="text-xl font-semibold text-gray-700 mb-2">Pricing:</h3>
+      <ul className="space-y-2">
+        {pricing.map((price, index) => (
+          <li key={index} className="flex items-start">
+            <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1" />
+            <span>{price}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
+const AIToolsInfographic = () => {
+  const tools = [
+    {
+      name: "Jasper AI",
+      features: [
+        "50+ AI-powered writing templates",
+        "SEO-optimized content generation",
+        "Integration with popular marketing tools",
+        "Plagiarism checker",
+        "Multi-language support"
+      ],
+      pricing: [
+        "Starter package: $49/month",
+        "Custom pricing for enterprise solutions"
+      ]
+    },
+    {
+      name: "ElevenLabs",
+      link: "http://elevenlabs.io/?from=partnercrawford1128",
+      features: [
+        "High-fidelity voice cloning",
+        "Emotional and tonal control",
+        "Multi-language voice generation",
+        "Real-time voice conversion",
+        "API integration for developers"
+      ],
+      pricing: [
+        "Free tier with limited features",
+        "Paid plans start at $22/month",
+        "Custom pricing for business needs"
+      ]
+    },
+    {
+      name: "Zebracat AI",
+      link: "http://studio.zebracat.ai/signup/?via=zach",
+      features: [
+        "AI-generated design templates",
+        "Automated color palette suggestions",
+        "Smart object removal and background replacement",
+        "Animation generation from static images",
+        "Collaborative design workspace"
+      ],
+      pricing: [
+        "Free trial for new users",
+        "Paid plans start at $29/month",
+        "Custom enterprise solutions available"
+      ]
+    }
+  ];
+
+  return (
+    <div className="max-w-4xl mx-auto p-6 bg-gray-100">
+      <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
+        Top 3 AI Automation Tools for 2024
+      </h1>
+      {tools.map((tool, index) => (
+        <AITool key={index} {...tool} />
+      ))}
+    </div>
+  );
+};
+
+export default AIToolsInfographic;
